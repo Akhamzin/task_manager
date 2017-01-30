@@ -1,0 +1,49 @@
+h2
+  | Sign up
+= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+  = devise_error_messages!
+  .field
+    = f.label :first_name, "Имя"
+    br
+    = f.text_field :first_name, autofocus: true
+  .field
+    = f.label :last_name, "Фамилия"
+    br
+    = f.text_field :last_name
+  .field
+    = f.label :middle_name, "Отчество"
+    br
+    = f.text_field :middle_name
+  .field
+    = f.label :company_name, "Наименование компании"
+    br
+    = f.text_field :company_name
+  .field
+    = f.label :phone_number, "Номер телефона"
+    br
+    = f.text_field :phone_number
+  .field
+    = f.label :description, "Описание"
+    br
+    = f.text_field :description
+  .field
+    = f.label :email
+    br
+    = f.email_field :email
+  .field
+    = f.label :password, "Пароль"
+    - if @minimum_password_length
+      em
+        | (
+        = @minimum_password_length
+        |  знаков минимум)
+    br
+    = f.password_field :password, autocomplete: "off"
+  .field
+    = f.label :password_confirmation, "Повторите пароль"
+    br
+    = f.password_field :password_confirmation, autocomplete: "off"
+  .actions
+    br
+    = f.submit "Зарегистрироваться"
+= render "devise/shared/links"
