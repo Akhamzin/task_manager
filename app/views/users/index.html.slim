@@ -1,0 +1,8 @@
+h1
+  | Список клиентов в системе
+.container
+  - @users.each do |user|
+    p
+      = user.first_name + " " + user.last_name
+    p
+      = link_to "Посмотреть данные пользователя", user_path(user)

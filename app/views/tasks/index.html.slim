@@ -1,2 +1,8 @@
 h1
-  | Добрый день!
+  | Все задачи
+.container
+  - @tasks.each do |task|
+    p
+      = task.name
+    p
+      = link_to "Посмотреть данные задачи", task_path(task)

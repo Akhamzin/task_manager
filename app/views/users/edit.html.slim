@@ -1,0 +1,48 @@
+.page_wrapper
+  h1
+    | Редактирование клиента
+  = form_for @user do |f|
+    - if @user.errors.any?
+      .alert.alert-danger
+        #error_explanation
+          h2
+            = pluralize(@user.errors.count, "error")
+          ul
+            - @user.errors.full_messages.each do |msg|
+              li
+                = msg
+    .field
+      = f.label :first_name, "Имя"
+      br
+      = f.text_field :first_name, autofocus: true
+    .field
+      = f.label :last_name, "Фамилия"
+      br
+      = f.text_field :last_name
+    .field
+      = f.label :middle_name, "Отчество"
+      br
+      = f.text_field :middle_name
+    .field
+      = f.label :company_name, "Наименование компании"
+      br
+      = f.text_field :company_name
+    .field
+      = f.label :phone_number, "Номер телефона"
+      br
+      = f.text_field :phone_number
+    .field
+      = f.label :description, "Описание"
+      br
+      = f.text_area :description, rows: 4
+    .field
+      = f.label :email
+      br
+      = f.email_field :email
+    .field
+      = f.label :password, "Пароль"
+      br
+      = f.password_field :password, autocomplete: "off"
+    .actions
+      br
+      = f.submit "Обновить данные клиента"

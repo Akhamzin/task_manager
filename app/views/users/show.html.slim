@@ -1,0 +1,28 @@
+.page_wrapper
+  h1
+    | Данные о пользователе
+  .container
+    p
+      strong Имя пользователя
+      br
+      = @user.first_name + " " + @user.last_name
+    p
+      strong Email
+      br
+      = @user.email
+    p
+      strong Наименование компании
+      br
+      = @user.company_name
+    p
+      strong Номер телефона
+      br
+      = @user.phone_number
+    p
+      strong Описание
+      br
+      = @user.description
+    p
+      - if user_signed_in?
+        = link_to "Редактировать", edit_user_path(@user)
+        = link_to "Удалить", user_path(@user), method: :delete, data: { confirm: 'Вы уверены?' }

@@ -6,18 +6,19 @@ html
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
   header.navbar.navbar-default.navbar-fixed-top
-    .navbar-header
-      .navbar-brand
-        | Task Manager
     .container
       .nav.navbar-nav.pull-right
         - if user_signed_in?
           li
-            = link_to "Пользователь, #{current_user.email}", edit_user_registration_path
+            = link_to "#{current_user.email}", edit_user_registration_path
           li
             = link_to 'Выйти', destroy_user_session_path, :method => :delete
           li
             = link_to "Создать задачу", new_task_path
+          li
+            = link_to "Все задачи", tasks_path
+          li
+            = link_to "Пользователи", users_path
         - else
           li
             = link_to 'Войти', new_user_session_path
