@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170130133814) do
+ActiveRecord::Schema.define(version: 20170130145350) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,7 +33,12 @@ ActiveRecord::Schema.define(version: 20170130133814) do
     t.string   "status",      null: false
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.integer  "admin_id",    null: false
+    t.integer  "client_id",   null: false
   end
+
+  add_index "tasks", ["admin_id"], name: "index_tasks_on_admin_id", using: :btree
+  add_index "tasks", ["client_id"], name: "index_tasks_on_client_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -66,4 +71,6 @@ ActiveRecord::Schema.define(version: 20170130133814) do
 
   add_index "users_roles", ["user_id", "role_id"], name: "index_users_roles_on_user_id_and_role_id", using: :btree
 
+  add_foreign_key "tasks", "users", column: "admin_id"
+  add_foreign_key "tasks", "users", column: "client_id"
 end
