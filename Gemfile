@@ -11,6 +11,10 @@ gem 'slim-rails'
 gem 'devise'
 gem 'cancancan'
 gem 'rolify'
+<<<<<<< HEAD
+=======
+gem 'bootstrap-sass'
+>>>>>>> addroles
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views
