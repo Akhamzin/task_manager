@@ -1,0 +1,20 @@
+= form_for @task do |t|
+  - if @task.errors.any?
+    .alert.alert-danger
+      #error_explanation
+        h2
+          = pluralize(@task.errors.count, "error")
+        ul
+          - @task.errors.full_messages.each do |msg|
+            li
+              = msg
+  p
+    = t.label :name
+    br
+    = t.text_field :name
+  p
+    = t.label :description
+    br
+    = t.text_field :description
+  p
+    = t.submit

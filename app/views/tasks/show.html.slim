@@ -1,0 +1,24 @@
+.page_wrapper
+  h1
+    | Просмотр задачи
+  .container
+    p
+      strong Наименование
+      br
+      = @task.name
+    p
+      strong Описание
+      br
+      = @task.description
+    p
+      strong Статус задачи
+      br
+      = @task.status
+    p
+      strong Клиент
+      br
+      = @task.client.first_name + " " + @task.client.last_name
+    p
+      - if user_signed_in?
+        = link_to "Редактировать", edit_task_path(@task)
+        = link_to "Удалить", task_path(@task), method: :delete, data: { confirm: 'Вы уверены?' }

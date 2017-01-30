@@ -33,7 +33,7 @@ ActiveRecord::Schema.define(version: 20170130145350) do
     t.string   "status",      null: false
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
-    t.integer  "admin_id",    null: false
+    t.integer  "admin_id"
     t.integer  "client_id",   null: false
   end
 
