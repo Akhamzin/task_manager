@@ -19,6 +19,10 @@
         strong Клиент
         br
         = @task.client.first_name + " " + @task.client.last_name
+    p
+        strong Компания
+        br
+        = @task.client.company_name
     -if @task.admin.present?
       p
         strong Администратор
