@@ -17,8 +17,9 @@ html
             = link_to "Создать задачу", new_task_path
           li
             = link_to "Все задачи", tasks_path
-          li
-            = link_to "Пользователи", users_path
+          - if can? :manage, User
+            li
+              = link_to "Пользователи", users_path
         - else
           li
             = link_to 'Войти', new_user_session_path
