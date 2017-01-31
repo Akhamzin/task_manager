@@ -14,11 +14,18 @@
       strong Статус задачи
       br
       = @task.status
+    -if can? :manage, @task
+      p
+        strong Клиент
+        br
+        = @task.client.first_name + " " + @task.client.last_name
+    -if @task.admin.present?
+      p
+        strong Администратор
+        br
+        = @task.admin.first_name + " " + @task.admin.last_name
     p
-      strong Клиент
-      br
-      = @task.client.first_name + " " + @task.client.last_name
-    p
-      - if user_signed_in?
+      - if can? :manage, @task
         = link_to "Редактировать", edit_task_path(@task)
+        br
         = link_to "Удалить", task_path(@task), method: :delete, data: { confirm: 'Вы уверены?' }

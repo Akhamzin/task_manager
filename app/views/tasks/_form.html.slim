@@ -15,6 +15,9 @@
   p
     = t.label :description
     br
-    = t.text_field :description
+    = t.text_area :description
+  - if can? :manage, @task
+    p
+      = t.select :status, Task::STATUS
   p
     = t.submit

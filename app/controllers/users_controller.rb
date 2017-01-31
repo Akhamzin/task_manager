@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
   before_action :set_client, only: [:show, :edit, :update, :destroy]
+  load_and_authorize_resource
 
   def index
     @users = User.where.not(id: current_user.id)

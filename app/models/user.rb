@@ -13,4 +13,10 @@ class User < ActiveRecord::Base
   validates :last_name, presence: true
   validates :company_name, presence: true
   validates :description, presence: true
+
+  after_create :assign_default_role
+
+  def assign_default_role
+    self.add_role(:client) if self.roles.blank?
+  end
 end
