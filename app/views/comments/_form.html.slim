@@ -1,0 +1,8 @@
+= form_for([@task, @task.comments.build]) do |f|
+  p
+    = f.label :body, "Коммантарий"
+    br
+    = f.text_area :body
+    br
+    = f.submit "Добавить комментарий"
+end

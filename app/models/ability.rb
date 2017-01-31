@@ -15,6 +15,7 @@ class Ability
         can :read, Task do |task|
           task.client.company_name == user.company_name
         end
+        can :create, Comment
         # can :read, :all
       end
   end

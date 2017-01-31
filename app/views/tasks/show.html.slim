@@ -33,3 +33,11 @@
         = link_to "Редактировать", edit_task_path(@task)
         br
         = link_to "Удалить", task_path(@task), method: :delete, data: { confirm: 'Вы уверены?' }
+  p
+    strong
+      | Всего комментариев: 
+      = @task.comments.count
+    = render @task.comments
+    p
+      | Добавить комментарий
+      = render 'comments/form'
