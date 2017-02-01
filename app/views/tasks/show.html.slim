@@ -18,7 +18,7 @@
       p
         strong Клиент
         br
-        = @task.client.first_name + " " + @task.client.last_name
+        = @task.client.last_name + " " + @task.client.first_name + " " + @task.client.middle_name
       p
         strong Компания клиента
         br
@@ -27,7 +27,7 @@
       p
         strong Администратор
         br
-        = @task.admin.first_name + " " + @task.admin.last_name
+        = @task.admin.last_name + " " + @task.admin.first_name + " " + @task.admin.middle_name
     p
       - if can? :manage, @task
         = link_to "Редактировать", edit_task_path(@task)

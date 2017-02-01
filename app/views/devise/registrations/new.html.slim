@@ -21,7 +21,7 @@ h2
   .field
     = f.label :phone_number, "Номер телефона"
     br
-    = f.text_field :phone_number
+    = f.text_field :phone_number, placeholder: "+7 937 1111111"
   .field
     = f.label :description, "Описание"
     br
@@ -29,7 +29,7 @@ h2
   .field
     = f.label :email
     br
-    = f.email_field :email
+    = f.email_field :email, placeholder: "example@example.com"
   .field
     = f.label :password, "Пароль"
     - if @minimum_password_length

@@ -12,6 +12,7 @@ gem 'devise'
 gem 'cancancan'
 gem 'rolify'
 gem 'bootstrap-sass'
+gem 'russian_phone'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views

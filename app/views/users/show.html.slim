@@ -23,6 +23,10 @@
       br
       = @user.description
     p
-      - if user_signed_in?
+      strong Дата последнего входа
+      br
+      = @user.last_sign_in_at.strftime("%H:%M:%S %d.%m.%Y")
+    p
+      - if can? :manage, :all
         = link_to "Редактировать", edit_user_path(@user)
         = link_to "Удалить", user_path(@user), method: :delete, data: { confirm: 'Вы уверены?' }

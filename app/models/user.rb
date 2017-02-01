@@ -8,7 +8,9 @@ class User < ActiveRecord::Base
   has_many :tasks, dependent: :destroy, :foreign_key => 'client_id'
   has_many :comments, dependent: :destroy
   # number_regex = ((8|\+7)-?)?\(?\d{3}\)?-?\d{1}-?\d{1}-?\d{1}-?\d{1}-?\d{1}-?\d{1}-?\d{1}
-  # validates :phone_number,  with: number_regex
+  validates :phone_number, presence: true
+  # russian_phone :phone_number
+  # russian_phone :validated_phone_number, default_country: 7, validate: true
   validates :first_name, presence: true
   validates :middle_name, presence: true
   validates :last_name, presence: true

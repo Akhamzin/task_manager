@@ -12,7 +12,7 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(client_params)
+    @user = User.new(devise_parameter_sanitizer.sanitize(:sign_up))
 
     if @user.save
       flash[:notice] = "Клиент успешно создан."
@@ -48,7 +48,7 @@ class UsersController < ApplicationController
 
   private
     def client_params
-      params.require(:user).permit(:first_name, :last_name, :middle_name, :company_name, :phone_number, :description, :email, :password)
+      params.require(:user).permit(:first_name, :last_name, :middle_name, :company_name, :phone_number, :description, :email, :password, :password_confirmation)
     end
 
     def set_client

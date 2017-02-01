@@ -6,3 +6,6 @@ h1
       = user.first_name + " " + user.last_name
     p
       = link_to "Посмотреть данные пользователя", user_path(user)
+.container
+  p
+    = link_to "Добавить пользователя", new_user_path
