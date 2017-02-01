@@ -31,12 +31,10 @@ html
 
   body
     .container
-      br
-      br
       - if notice
-        p.notice
+        .alert.alert-success
           = notice
       - if alert
-        p.alert
+        .alert.alert-danger
           = alert
       = yield

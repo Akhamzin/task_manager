@@ -1,32 +1,38 @@
-.page_wrapper
+
   h1
     | Данные о пользователе
-  .container
-    p
-      strong Имя пользователя
-      br
-      = @user.first_name + " " + @user.last_name
-    p
-      strong Email
-      br
-      = @user.email
-    p
-      strong Наименование компании
-      br
-      = @user.company_name
-    p
-      strong Номер телефона
-      br
-      = @user.phone_number
-    p
-      strong Описание
-      br
-      = @user.description
-    p
-      strong Дата последнего входа
-      br
-      = @user.last_sign_in_at.strftime("%H:%M:%S %d.%m.%Y")
-    p
-      - if can? :manage, :all
-        = link_to "Редактировать", edit_user_path(@user)
-        = link_to "Удалить", user_path(@user), method: :delete, data: { confirm: 'Вы уверены?' }
+
+  table.table.table-striped.table-hover
+    thead
+      tr
+        th
+          | ФИО клиента
+        th
+          | Email
+        th
+          | Наименование компании
+        th
+          | Номер телефона
+        th
+          | Описание
+        th
+          | Дата последнего входа
+    tbody
+      tr
+        td
+          = @user.last_name + " " + @user.first_name + " " + @user.middle_name
+        td
+          = @user.email
+        td
+          = @user.company_name
+        td
+          = @user.phone_number
+        td
+          = @user.description
+        td
+          = @user.last_sign_in_at.strftime("%H:%M:%S %d.%m.%Y")
+  p
+    - if can? :manage, :all
+      = link_to "Редактировать", edit_user_path(@user)
+      |  |  
+      = link_to "Удалить", user_path(@user), method: :delete, data: { confirm: 'Вы уверены?' }

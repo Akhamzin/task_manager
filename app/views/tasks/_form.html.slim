@@ -1,29 +1,28 @@
 = form_for @task do |t|
   - if @task.errors.any?
     .alert.alert-danger
-      #error_explanation
-        h2
-          = pluralize(@task.errors.count, "error")
-        ul
-          - @task.errors.full_messages.each do |msg|
-            li
-              = msg
+      h2
+        = pluralize(@task.errors.count, "error")
+      ul
+        - @task.errors.full_messages.each do |msg|
+          li
+            = msg
   p
     = t.label :name, "Заголовок"
     br
-    = t.text_field :name
+    = t.text_field :name, class: 'form-control', autofocus: true
   p
     = t.label :description, "Описание"
     br
-    = t.text_area :description
+    = t.text_area :description, class: 'form-control'
   - if can? :manage, @task
     p
       = t.label :status, "Статус"
       br
-      = t.select :status, Task::STATUS
+      = t.select :status, Task::STATUS, { class: "dropdown-menu" }
     p
       = t.label :admin, "Администратор"
       br
       = t.collection_select(:admin_id, User.with_role(:admin), :id, :first_and_last_name)
   p
-    = t.submit
+    = t.submit class: 'btn btn-default'

@@ -5,31 +5,31 @@ h2
   .field
     = f.label :first_name, "Имя"
     br
-    = f.text_field :first_name, autofocus: true
+    = f.text_field :first_name, class: 'form-control', autofocus: true
   .field
     = f.label :last_name, "Фамилия"
     br
-    = f.text_field :last_name
+    = f.text_field :last_name, class: 'form-control'
   .field
     = f.label :middle_name, "Отчество"
     br
-    = f.text_field :middle_name
+    = f.text_field :middle_name, class: 'form-control'
   .field
     = f.label :company_name, "Наименование компании"
     br
-    = f.text_field :company_name
+    = f.text_field :company_name, class: 'form-control'
   .field
     = f.label :phone_number, "Номер телефона"
     br
-    = f.text_field :phone_number, placeholder: "+7 937 1111111"
+    = f.text_field :phone_number, class: 'form-control', placeholder: "+7 937 1111111"
   .field
     = f.label :description, "Описание"
     br
-    = f.text_area :description, rows: 4
+    = f.text_area :description, class: 'form-control', rows: 4
   .field
     = f.label :email
     br
-    = f.email_field :email, placeholder: "example@example.com"
+    = f.email_field :email, class: 'form-control', placeholder: "example@example.com"
   .field
     = f.label :password, "Пароль"
     - if @minimum_password_length
@@ -38,11 +38,11 @@ h2
         = @minimum_password_length
         |  знаков минимум)
     br
-    = f.password_field :password, autocomplete: "off"
+    = f.password_field :password, class: 'form-control', autocomplete: "off"
   .field
     = f.label :password_confirmation, "Повторите пароль"
     br
-    = f.password_field :password_confirmation, autocomplete: "off"
+    = f.password_field :password_confirmation, class: 'form-control', autocomplete: "off"
   .actions
     br
     = f.submit "Зарегистрироваться"
