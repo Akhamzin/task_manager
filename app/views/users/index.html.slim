@@ -1,7 +1,21 @@
-h1
-  | Список клиентов в системе
-.container
+.container-fluid
+  h2 Клиенты
   - @users.each do |user|
-    p
-      = user.last_name + " " + user.first_name + " " + user.middle_name + " | "
-      = link_to "Посмотреть данные пользователя", user_path(user)
+    - if user.has_role? :client
+      .row
+        .col-xs-6
+          br
+          = user.last_name + " " + user.first_name + " " + user.middle_name
+        .col-xs-6
+          br
+          = link_to "Посмотреть данные пользователя", user_path(user)
+  h2 Администраторы
+  - @users.each do |user|
+    - if user.has_role? :admin
+      .row
+        .col-xs-6
+          br
+          = user.last_name + " " + user.first_name + " " + user.middle_name
+        .col-xs-6
+          br
+          = link_to "Посмотреть данные пользователя", user_path(user)

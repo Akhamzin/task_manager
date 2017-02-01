@@ -1,9 +1,12 @@
 h1
   | Все задачи
-.container
+.container-fluid
   - @tasks.each do |task|
     - if can? :read, task
-      p
-        = task.name
-        |  | 
-        = link_to "Посмотреть данные задачи", task_path(task)
+      .row
+        .col-xs-6
+          br
+          = task.name
+        .col-xs-6
+          br
+          = link_to "Посмотреть данные задачи", task_path(task)

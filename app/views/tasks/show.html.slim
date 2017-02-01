@@ -1,43 +1,47 @@
-.page_wrapper
+.container
   h1
     | Просмотр задачи
-  .container
+  .container-fluid
+    .row
+      .col-xs-6
+        strong Наименование
+        br
+        = @task.name
+      .col-xs-6
+        strong Описание
+        br
+        = @task.description
+      .col-xs-6
+        strong Статус задачи
+        br
+        = @task.status
+      -if can? :manage, @task
+        .col-xs-6
+          strong Клиент
+          br
+          = @task.client.last_name + " " + @task.client.first_name + " " + @task.client.middle_name
+        .col-xs-6
+          strong Компания клиента
+          br
+          = @task.client.company_name
+      -if @task.admin.present?
+        .col-xs-6
+          strong Администратор
+          br
+          = @task.admin.last_name + " " + @task.admin.first_name + " " + @task.admin.middle_name
+      .col-xs-6
+        br
+        - if can? :manage, @task
+          = link_to "Редактировать", edit_task_path(@task), class: 'btn btn-default'
+          br
+          br
+          = link_to "Удалить", task_path(@task), method: :delete, data: { confirm: 'Вы уверены?' }, class: 'btn btn-default'
     p
-      strong Наименование
       br
-      = @task.name
-    p
-      strong Описание
-      br
-      = @task.description
-    p
-      strong Статус задачи
-      br
-      = @task.status
-    -if can? :manage, @task
+      strong
+        | Всего комментариев: 
+        = @task.comments.count
+      = render @task.comments
       p
-        strong Клиент
-        br
-        = @task.client.last_name + " " + @task.client.first_name + " " + @task.client.middle_name
-      p
-        strong Компания клиента
-        br
-        = @task.client.company_name
-    -if @task.admin.present?
-      p
-        strong Администратор
-        br
-        = @task.admin.last_name + " " + @task.admin.first_name + " " + @task.admin.middle_name
-    p
-      - if can? :manage, @task
-        = link_to "Редактировать", edit_task_path(@task)
-        br
-        = link_to "Удалить", task_path(@task), method: :delete, data: { confirm: 'Вы уверены?' }
-  p
-    strong
-      | Всего комментариев: 
-      = @task.comments.count
-    = render @task.comments
-    p
-      | Добавить комментарий
-      = render 'comments/form'
+        | Добавить комментарий
+        = render 'comments/form' 
