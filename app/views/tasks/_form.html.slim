@@ -9,15 +9,21 @@
             li
               = msg
   p
-    = t.label :name
+    = t.label :name, "Заголовок"
     br
     = t.text_field :name
   p
-    = t.label :description
+    = t.label :description, "Описание"
     br
     = t.text_area :description
   - if can? :manage, @task
     p
+      = t.label :status, "Статус"
+      br
       = t.select :status, Task::STATUS
+    p
+      = t.label :admin, "Администратор"
+      br
+      = t.collection_select(:admin_id, User.with_role(:admin), :id, :first_and_last_name)
   p
     = t.submit

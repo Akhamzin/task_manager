@@ -8,4 +8,5 @@ class Task < ActiveRecord::Base
   validates :status, inclusion: { in: %w(новая просмотрена оплачена выполнена закрыта) }
 
   STATUS = %w(новая просмотрена оплачена выполнена закрыта)
+
 end

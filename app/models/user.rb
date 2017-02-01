@@ -5,8 +5,8 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   
-  has_many :tasks
-  has_many :comments
+  has_many :tasks, dependent: :destroy, :foreign_key => 'client_id'
+  has_many :comments, dependent: :destroy
   # number_regex = ((8|\+7)-?)?\(?\d{3}\)?-?\d{1}-?\d{1}-?\d{1}-?\d{1}-?\d{1}-?\d{1}-?\d{1}
   # validates :phone_number,  with: number_regex
   validates :first_name, presence: true
@@ -20,4 +20,9 @@ class User < ActiveRecord::Base
   def assign_default_role
     self.add_role(:client) if self.roles.blank?
   end
+
+  def first_and_last_name
+    "#{first_name} #{last_name}"
+  end
+
 end
