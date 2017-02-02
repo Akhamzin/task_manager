@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   devise_for :users, :path_prefix => 'd'
-  resources :users
-
+  # resources :users
+  devise_scope :user do
+    resources :users
+  end
   resources :tasks do
     resources :comments, only: [:create]
   end

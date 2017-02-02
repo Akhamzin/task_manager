@@ -29,8 +29,12 @@
           = @user.phone_number
         td
           = @user.description
-        td
-          = @user.last_sign_in_at.strftime("%H:%M:%S %d.%m.%Y")
+        - if @user.last_sign_in_at.present?
+          td
+            = @user.last_sign_in_at.strftime("%H:%M:%S %d.%m.%Y")
+        - else
+          td
+            | Пользовтель еще не входил в систему
   p
     - if can? :manage, :all
       = link_to "Редактировать", edit_user_path(@user)
