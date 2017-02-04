@@ -1,13 +1,14 @@
-h1
-  | Все задачи
-.container-fluid
-  - @tasks.each do |task|
-    - if can? :read, task
-      .row
-        .col-xs-6
-          br
-          = task.name
-        .col-xs-6
-          br
-          = link_to "Посмотреть данные задачи", task_path(task)
+.panel.panel-default
+  .panel.panel-heading
+    h1
+      | Все задачи
+    - @tasks.each do |task|
+      - if can? :read, task
+        .panel.panel-body
+          .col-xs-6
+            br
+            = task.name
+          .col-xs-6
+            br
+            = link_to "Посмотреть данные задачи", task_path(task)
         
