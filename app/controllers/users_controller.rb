@@ -11,15 +11,12 @@ class UsersController < Devise::RegistrationsController
 
   def new
     @user = User.new
+    @roles = Role.all
   end
 
   def create
     @user = User.new(user_params)
-    if params[:roles].first == "client"
-      @user.add_role :client
-    else
-      @user.add_role :admin
-    end
+    @roles = Role.all
     if @user.save
       flash[:notice] = "Клиент успешно создан."
       redirect_to @user
@@ -32,12 +29,14 @@ class UsersController < Devise::RegistrationsController
   end
 
   def edit
+    @roles = Role.all
   end
 
   def update
     params[:user].delete(:password) if params[:user][:password].blank?
     params[:user].delete(:password_confirmation) if params[:user][:password].blank? and params[:user][:password_confirmation].blank?
     if @user.update_attributes(user_params)
+
       flash[:notice] = "Клиент успешно обновлён."
       redirect_to @user
     else
@@ -48,13 +47,13 @@ class UsersController < Devise::RegistrationsController
   def destroy
     if @user.destroy
       flash[:notice] = "Пользователь успешно удален."
-      redirect_to root_path
+      redirect_to users_path
     end
   end
 
   private
     def user_params
-      params.require(:user).permit(:first_name, :last_name, :middle_name, :company_name, :phone_number, :description, :email, :password, :password_confirmation)
+      params.require(:user).permit(:role_ids, :first_name, :last_name, :middle_name, :company_name, :phone_number, :description, :email, :password, :password_confirmation)
     end
 
     def set_user

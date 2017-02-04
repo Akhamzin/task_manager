@@ -40,6 +40,10 @@
       br
       = f.email_field :email, placeholder: "example@example.com"
     .field
+     - @roles.each do |role|
+       = radio_button_tag "user[role_ids][]", role.id, @user.role_ids.include?(role.id)
+       = role.name
+    .field
       = f.label :password, "Пароль"
       br
       = f.password_field :password, autocomplete: "off"
