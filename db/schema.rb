@@ -45,7 +45,7 @@ ActiveRecord::Schema.define(version: 20170131133132) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.integer  "admin_id"
-    t.integer  "client_id",   null: false
+    t.integer  "client_id"
   end
 
   add_index "tasks", ["admin_id"], name: "index_tasks_on_admin_id", using: :btree
@@ -84,6 +84,6 @@ ActiveRecord::Schema.define(version: 20170131133132) do
 
   add_foreign_key "comments", "tasks"
   add_foreign_key "comments", "users"
-  add_foreign_key "tasks", "users", column: "admin_id"
-  add_foreign_key "tasks", "users", column: "client_id"
+  add_foreign_key "tasks", "users", column: "admin_id", on_delete: :cascade
+  add_foreign_key "tasks", "users", column: "client_id", on_delete: :cascade
 end

@@ -18,8 +18,8 @@ class User < ActiveRecord::Base
   validates :company_name, presence: true
   validates :description, presence: true
 
+  before_create :first_user_add_admin_role
   after_create :assign_default_role
-  after_update :assign_another_role
 
   def assign_default_role
     if self.role_ids == 1 || self.roles.blank?
@@ -29,14 +29,8 @@ class User < ActiveRecord::Base
     end
   end
 
-  def assign_another_role
-    if self.role_ids[0] == 1
-      self.remove_role(:admin)
-      self.add_role(:client)
-    else
-      self.remove_role(:client)
-      self.add_role(:admin)
-    end
+  def first_user_add_admin_role
+    self.add_role(:admin) unless User.first.present?
   end
 
   def first_and_last_name
