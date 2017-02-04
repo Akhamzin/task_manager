@@ -1,42 +1,48 @@
+.panel.panel-default
+  .panel.panel-heading
+    h1
+      | Данные о пользователе
 
-  h1
-    | Данные о пользователе
-
-  table.table.table-striped.table-hover
-    thead
+  table.table.table-sm.table-hover
+    tbody
       tr
         th
           | ФИО клиента
+          td
+            = @user.last_name + " " + @user.first_name + " " + @user.middle_name
+      tr
         th
           | Email
+          td
+            = @user.email
+      tr
         th
           | Наименование компании
+          td
+            = @user.company_name
+      tr
         th
           | Номер телефона
+          td
+            = @user.phone_number
+      tr
         th
           | Описание
+          td
+            = @user.description
+      tr
         th
           | Дата последнего входа
-    tbody
-      tr
-        td
-          = @user.last_name + " " + @user.first_name + " " + @user.middle_name
-        td
-          = @user.email
-        td
-          = @user.company_name
-        td
-          = @user.phone_number
-        td
-          = @user.description
-        - if @user.last_sign_in_at.present?
-          td
-            = @user.last_sign_in_at.strftime("%H:%M:%S %d.%m.%Y")
-        - else
-          td
-            | Пользовтель еще не входил в систему
-  p
-    - if can? :manage, :all
-      = link_to "Редактировать", edit_user_path(@user)
-      |  |  
-      = link_to "Удалить", user_path(@user), method: :delete, data: { confirm: 'Вы уверены?' }
+          - if @user.last_sign_in_at.present?
+            td
+              = @user.last_sign_in_at.strftime("%H:%M:%S %d.%m.%Y")
+          - else
+            td
+              | Пользовтель еще не входил в систему
+    
+      
+p
+  - if can? :manage, :all
+    = link_to "Редактировать", edit_user_path(@user)
+    |  |  
+    = link_to "Удалить", user_path(@user), method: :delete, data: { confirm: 'Вы уверены?' }

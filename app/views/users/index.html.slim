@@ -1,23 +1,22 @@
-.container-fluid
-  h2 Клиенты
+.panel.panel-default
+  .panel.panel-heading
+    h2 Клиенты
   - @users.each do |user|
     - if user.has_role? :client
-      .row
+      .panel.panel-body
         .col-xs-6
-          br
           = user.last_name + " " + user.first_name + " " + user.middle_name
         .col-xs-6
-          br
-          = link_to "Посмотреть данные пользователя", user_path(user)
-  h2 Администраторы
+          = link_to "Посмотреть данные пользователя", user_path(user), class: "btn btn-default"
+.panel.panel-default
+  .panel.panel-heading
+    h2 Администраторы
   - @users.each do |user|
     - if user.has_role? :admin
-      .row
+      .panel.panel-body
         .col-xs-6
-          br
           = user.last_name + " " + user.first_name + " " + user.middle_name
         .col-xs-6
-          br
-          = link_to "Посмотреть данные пользователя", user_path(user)
-  p
-    = link_to "Добавить нового пользователя", new_user_path
+          = link_to "Посмотреть данные пользователя", user_path(user), class: "btn btn-default"
+p
+  = link_to "Добавить нового пользователя", new_user_path, class: "btn btn-default"
