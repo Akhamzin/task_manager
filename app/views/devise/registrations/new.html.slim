@@ -27,6 +27,10 @@ h2
     br
     = f.text_area :description, class: 'form-control', rows: 4
   .field
+    = f.label :url, t('activerecord.attributes.user.url')
+    br
+    = f.text_field :url, class: 'form-control', placeholder: "http://example.ru или https://example.ru"
+  .field
     = f.label :email, t('activerecord.attributes.user.email')
     br
     = f.email_field :email, class: 'form-control', placeholder: "example@example.com"

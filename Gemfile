@@ -15,6 +15,7 @@ gem 'bootstrap-sass'
 #gem 'russian_phone'
 gem 'rails-i18n', github: 'svenfuchs/rails-i18n', branch: 'rails-4-x'
 gem 'devise-i18n'
+gem 'validate_url'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views

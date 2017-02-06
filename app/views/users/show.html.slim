@@ -32,6 +32,11 @@
             = @user.description
       tr
         th
+          = t('users.show.url')
+          td
+            = @user.url
+      tr
+        th
           = t('users.show.last_sign_in_at')
           - if @user.last_sign_in_at.present?
             td

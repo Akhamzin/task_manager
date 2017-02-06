@@ -12,6 +12,7 @@ class User < ActiveRecord::Base
   validates :phone_number, presence: true, uniqueness: true, numericality: true
   # russian_phone :phone_number
   # russian_phone :validated_phone_number, default_country: 7, validate: true
+  validates :url, :url => true
   validates :first_name, presence: true
   validates :middle_name, presence: true
   validates :last_name, presence: true

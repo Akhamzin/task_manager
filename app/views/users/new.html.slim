@@ -36,15 +36,19 @@
     .field
       = f.label :email, t('activerecord.attributes.user.email')
       br
-      = f.email_field :email, placeholder: "example@example.com"
+      = f.email_field :email, placeholder: "example@example.com", class: 'form-control'
+    .field
+      = f.label :url, t('activerecord.attributes.user.url')
+      br
+      = f.text_field :url, class: 'form-control', placeholder: "http://example.ru или https://example.ru"
     .field
       = f.label :password, t('activerecord.attributes.user.password')
       br
-      = f.password_field :password, autocomplete: "off"
+      = f.password_field :password, autocomplete: "off", class: 'form-control'
     .field
       = f.label :password_confirmation, t('activerecord.attributes.user.password_confirmation')
       br
-      = f.password_field :password_confirmation, autocomplete: "off"
+      = f.password_field :password_confirmation, autocomplete: "off", class: 'form-control'
     .actions
       br
       = f.submit t('users.new.submit'), class: 'btn btn-default'
