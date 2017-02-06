@@ -1,48 +1,48 @@
 .panel.panel-default
   .panel.panel-heading
     h1
-      | Данные о пользователе
+      = t('users.show.title')
 
   table.table.table-sm.table-hover
     tbody
       tr
         th
-          | ФИО клиента
+          = t('users.show.fio')
           td
             = @user.last_name + " " + @user.first_name + " " + @user.middle_name
       tr
         th
-          | Email
+          = t('users.show.email')
           td
             = @user.email
       tr
         th
-          | Наименование компании
+          = t('users.show.company_name')
           td
             = @user.company_name
       tr
         th
-          | Номер телефона
+          = t('users.show.phone_number')
           td
             = @user.phone_number
       tr
         th
-          | Описание
+          = t('users.show.description')
           td
             = @user.description
       tr
         th
-          | Дата последнего входа
+          = t('users.show.last_sign_in_at')
           - if @user.last_sign_in_at.present?
             td
               = @user.last_sign_in_at.strftime("%H:%M:%S %d.%m.%Y")
           - else
             td
-              | Пользовтель еще не входил в систему
+              = t('users.show.did_not_sign_in_yet')
     
       
 p
   - if can? :manage, :all
-    = link_to "Редактировать", edit_user_path(@user)
+    = link_to t('users.show.edit'), edit_user_path(@user)
     |  |  
-    = link_to "Удалить", user_path(@user), method: :delete, data: { confirm: 'Вы уверены?' }
+    = link_to t('users.show.delete'), user_path(@user), method: :delete, data: { confirm:  t('users.show.confirm') }

@@ -8,6 +8,6 @@ class Task < ActiveRecord::Base
   validates :name, :description, presence: true
   validates :status, inclusion: { in: %w(новая просмотрена оплачена выполнена закрыта) }
 
-  STATUS = %w(Новая Просмотрена Оплачена Выполнена Закрыта)
+  STATUS = %w(новая просмотрена оплачена выполнена закрыта)
 
 end

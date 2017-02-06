@@ -1,10 +1,9 @@
 .panel.panel-default
   .panel-heading
     p
-      | Пост добавлен  
+      = t ('comments.time_add')
       = time_ago_in_words(comment.created_at) 
-      |  назад, 
-      | пользователем 
+      = t ('comments.who_add') 
       = comment.user.first_name + " " + comment.user.last_name
   .panel-body
     = comment.body

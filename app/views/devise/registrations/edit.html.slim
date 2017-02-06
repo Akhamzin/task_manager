@@ -1,34 +1,33 @@
 h2
-  | Редактирвоание профиля 
-  = resource_name.to_s.humanize
+  | Редактировать профиль пользователя 
 = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
   = devise_error_messages!
   .field
-    = f.label :first_name, "Имя"
+    = f.label :first_name, t('activerecord.attributes.user.first_name')
     br
     = f.text_field :first_name, class: 'form-control', autofocus: true
   .field
-    = f.label :last_name, "Фамилия"
+    = f.label :last_name, t('activerecord.attributes.user.last_name')
     br
     = f.text_field :last_name, class: 'form-control'
   .field
-    = f.label :middle_name, "Отчество"
+    = f.label :middle_name, t('activerecord.attributes.user.middle_name')
     br
     = f.text_field :middle_name, class: 'form-control'
   .field
-    = f.label :company_name, "Наименование компании"
+    = f.label :company_name, t('activerecord.attributes.user.company_name')
     br
     = f.text_field :company_name, class: 'form-control'
   .field
-    = f.label :phone_number, "Номер телефона"
+    = f.label :phone_number, t('activerecord.attributes.user.phone_number')
     br
     = f.text_field :phone_number, class: 'form-control', placeholder: "+7 937 1111111"
   .field
-    = f.label :description, "Описание"
+    = f.label :description, t('activerecord.attributes.user.description')
     br
     = f.text_area :description, class: 'form-control', rows: 4
   .field
-    = f.label :email
+    = f.label :email, t('activerecord.attributes.user.email')
     br
     = f.email_field :email, class: 'form-control', placeholder: "example@example.com"
   - if devise_mapping.confirmable? && resource.pending_reconfirmation?
@@ -36,9 +35,11 @@ h2
       | Currently waiting confirmation for: 
       = resource.unconfirmed_email
   .field
-    = f.label :password, "Пароль"
+    = f.label :password, t('activerecord.attributes.user.password')
     i
-      | (leave blank if you don't want to change it)
+      |  (
+      = t('devise.registrations.edit.leave_blank_if_you_don_t_want_to_change_it')
+      | )
     br
     = f.password_field :password, class: 'form-control', autocomplete: "off"
     - if @minimum_password_length
@@ -47,13 +48,13 @@ h2
         = @minimum_password_length
         |  знаков минимум
   .field
-    = f.label :password_confirmation, "Подтвердите пароль"
+    = f.label :password_confirmation, t('activerecord.attributes.user.password_confirmation')
     br
     = f.password_field :password_confirmation, class: 'form-control', autocomplete: "off"
   .field
     = f.label :current_password
     i
-      | (we need your current password to confirm your changes)
+      | (введите текущий пароль, чтобы сохранить изменения)
     br
     = f.password_field :current_password, class: 'form-control', autocomplete: "off"
     br
@@ -62,5 +63,5 @@ h2
 h3
   | Удалить учетную запись
 p
-  = button_to "Cancel my account", registration_path(resource_name), class: 'btn btn-default', data: { confirm: "Are you sure?" }, method: :delete
-= link_to "Back", :back, class: 'btn btn-default'
+  = button_to t('devise.registrations.edit.cancel_my_account'), registration_path(resource_name), class: 'btn btn-default', data: { confirm: t('devise.registrations.edit.are_you_sure') }, method: :delete
+= link_to t('devise.shared.links.back'), :back, class: 'btn btn-default'

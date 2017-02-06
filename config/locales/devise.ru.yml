@@ -2,10 +2,16 @@ ru:
   activerecord:
     attributes:
       user:
+        company_name: "Компания"
         current_password: "Текущий пароль"
+        description: "Описание"
         email: Email
+        first_name: "Имя"
+        last_name: "Фамилия"
+        middle_name: "Отчество"
         password: "Пароль"
         password_confirmation: "Подтверждение пароля"
+        phone_number: "Номер телефона"
         remember_me: "Запомнить меня"
         reset_password_token: "Ссылка сброса пароля"
         unlock_token: "Токен разблокировки"

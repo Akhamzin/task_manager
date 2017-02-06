@@ -38,7 +38,7 @@ class TasksController < ApplicationController
 
   def destroy
     @task.destroy
-    flash[:notice] = "Задача успешно удалена."
+    flash[:notice] = t('tasks.destroy.notice')
     redirect_to root_path
   end
 

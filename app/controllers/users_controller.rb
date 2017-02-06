@@ -18,7 +18,7 @@ class UsersController < Devise::RegistrationsController
     @user = User.new(user_params)
     @roles = Role.all
     if @user.save
-      flash[:notice] = "Клиент успешно создан."
+      flash[:notice] = t('users.create.notice')
       redirect_to @user
     else
       render 'new'
@@ -36,17 +36,17 @@ class UsersController < Devise::RegistrationsController
     params[:user].delete(:password) if params[:user][:password].blank?
     params[:user].delete(:password_confirmation) if params[:user][:password].blank? and params[:user][:password_confirmation].blank?
     if @user.update_attributes(user_params)
-
-      flash[:notice] = "Клиент успешно обновлён."
+      flash[:notice] = t('users.update.notice')
       redirect_to @user
     else
+      flash[:alert] = t('users.update.alert')
       render :action => 'edit'
     end
   end
 
   def destroy
     if @user.destroy
-      flash[:notice] = "Пользователь успешно удален."
+      flash[:notice] = t('users.destroy.notice')
       redirect_to users_path
     end
   end

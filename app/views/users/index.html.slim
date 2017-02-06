@@ -1,22 +1,24 @@
 .panel.panel-default
   .panel.panel-heading
-    h2 Клиенты
+    h2
+      = t('users.index.client_title')
   - @users.each do |user|
     - if user.has_role? :client
       .panel.panel-body
         .col-xs-6
           = user.last_name + " " + user.first_name + " " + user.middle_name
         .col-xs-6
-          = link_to "Посмотреть данные пользователя", user_path(user), class: "btn btn-default"
+          = link_to t('users.index.show'), user_path(user), class: "btn btn-default"
 .panel.panel-default
   .panel.panel-heading
-    h2 Администраторы
+    h2
+      = t('users.index.admin_title')
   - @users.each do |user|
     - if user.has_role? :admin
       .panel.panel-body
         .col-xs-6
           = user.last_name + " " + user.first_name + " " + user.middle_name
         .col-xs-6
-          = link_to "Посмотреть данные пользователя", user_path(user), class: "btn btn-default"
+          = link_to t('users.index.show'), user_path(user), class: "btn btn-default"
 p
-  = link_to "Добавить нового пользователя", new_user_path, class: "btn btn-default"
+  = link_to t('users.index.new'), new_user_path, class: "btn btn-default"

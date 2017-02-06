@@ -8,21 +8,21 @@
           li
             = msg
   p
-    = t.label :name, "Заголовок"
+    = t.label :name, t('tasks.attributes.name')
     br
     = t.text_field :name, class: 'form-control', autofocus: true
   p
-    = t.label :description, "Описание"
+    = t.label :description, t('tasks.attributes.description')
     br
     = t.text_area :description, class: 'form-control'
   - if can? :manage, @task
     p
-      = t.label :status, "Статус"
+      = t.label :status, t('tasks.attributes.status')
       br
-      = t.select :status, Task::STATUS, { class: "dropdown-menu" }
+      = t.select :status, Task::STATUS, {}, {class: "form-control"}
     p
-      = t.label :admin, "Администратор"
+      = t.label :admin, t('tasks.attributes.admin')
       br
-      = t.collection_select(:admin_id, User.with_role(:admin), :id, :first_and_last_name)
+      = t.collection_select(:admin_id, User.with_role(:admin), :id, :first_and_last_name, {}, {class: "form-control"})
   p
     = t.submit class: 'btn btn-default'

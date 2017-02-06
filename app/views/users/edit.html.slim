@@ -1,6 +1,6 @@
 .col-md-6.col-md-offset-3
   h1
-    | Редактирование клиента
+    = t('users.update.title')
   = form_for @user do |f|
     - if @user.errors.any?
       .alert.alert-danger
@@ -12,37 +12,37 @@
               li
                 = msg
     .field
-      = f.label :first_name, "Имя"
+      = f.label :first_name, t('activerecord.attributes.user.first_name')
       br
       = f.text_field :first_name, class: 'form-control', autofocus: true
     .field
-      = f.label :last_name, "Фамилия"
+      = f.label :last_name, t('activerecord.attributes.user.last_name')
       br
       = f.text_field :last_name, class: 'form-control'
     .field
-      = f.label :middle_name, "Отчество"
+      = f.label :middle_name, t('activerecord.attributes.user.middle_name')
       br
       = f.text_field :middle_name, class: 'form-control'
     .field
-      = f.label :company_name, "Наименование компании"
+      = f.label :company_name, t('activerecord.attributes.user.company_name')
       br
       = f.text_field :company_name, class: 'form-control'
     .field
-      = f.label :phone_number, "Номер телефона"
+      = f.label :phone_number, t('activerecord.attributes.user.phone_number')
       br
       = f.text_field :phone_number, class: 'form-control', placeholder: "+7 937 1111111"
     .field
-      = f.label :description, "Описание"
+      = f.label :description, t('activerecord.attributes.user.description')
       br
       = f.text_area :description, class: 'form-control', rows: 4
     .field
-      = f.label :email
+      = f.label :email, t('activerecord.attributes.user.email')
       br
       = f.email_field :email, class: 'form-control', placeholder: "example@example.com"
     .field
-      = f.label :password, "Пароль"
+      = f.label :password, t('activerecord.attributes.user.password')
       br
       = f.password_field :password, class: 'form-control', autocomplete: "off"
     .actions
       br
-      = f.submit "Обновить данные клиента", class: 'btn btn-default'
+      = f.submit t('users.update.submit'), class: 'btn btn-default'
