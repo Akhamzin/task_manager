@@ -1,12 +1,11 @@
 = form_for @task do |t|
   - if @task.errors.any?
     .alert.alert-danger
-      h2
-        = pluralize(@task.errors.count, "error")
-      ul
-        - @task.errors.full_messages.each do |msg|
-          li
-            = msg
+      #error_explanation
+        ul
+          - @task.errors.full_messages.each do |msg|
+            li
+              = msg
   p
     = t.label :name, t('tasks.attributes.name')
     br
