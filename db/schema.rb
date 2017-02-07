@@ -83,8 +83,8 @@ ActiveRecord::Schema.define(version: 20170206154101) do
 
   add_index "users_roles", ["user_id", "role_id"], name: "index_users_roles_on_user_id_and_role_id", using: :btree
 
-  add_foreign_key "comments", "tasks"
-  add_foreign_key "comments", "users"
+  add_foreign_key "comments", "tasks", on_delete: :cascade
+  add_foreign_key "comments", "users", on_delete: :cascade
   add_foreign_key "tasks", "users", column: "admin_id", on_delete: :cascade
   add_foreign_key "tasks", "users", column: "client_id", on_delete: :cascade
 end
